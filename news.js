@@ -95,9 +95,9 @@ searchBox.addEventListener('keypress', async function (event) {
             container.innerHTML = '';
         }})
 
-// window.onload=function(){
-//     fetchData("politics")
-// }
+window.onload=function(){
+     fetchData("technology")
+}
 
 function logout() {
   // Remove the stored token

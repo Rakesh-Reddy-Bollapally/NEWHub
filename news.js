@@ -89,7 +89,7 @@ let fetchData = async (search) => {
 
 searchBox.addEventListener('keypress', async function (event) {
         if (event.key === 'Enter') {
-               fetchData(searchBox.value) 
+               fetchData(searchBox.value.trim()) 
             //console.log(searchBox.value)
             searchBox.value="";
             container.innerHTML = '';

@@ -150,6 +150,7 @@ button:hover{
     .search{
         height:30px;
         width: 100px;
+        font-size:14px;
     }
     .container{
         margin-top: 0px;

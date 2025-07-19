@@ -105,4 +105,19 @@ function logout() {
   window.location.href ="./login.html";
 }
 
+function updatePlaceholders() {
+    let Input = document.querySelector('input[placeholder="Press Enter to search..."]');
+    console.log(Input)
+
+
+    if (window.innerWidth <= 768) {
+      if (Input) Input.placeholder = "Search";
+    } else {
+      if (Input) Input.placeholder = "Press Enter to search...";
+    }
+  }
+
+window.addEventListener("load", updatePlaceholders);
+window.addEventListener("resize", updatePlaceholders);
+
 

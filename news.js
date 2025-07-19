@@ -9,12 +9,12 @@ let fetchData = async (search) => {
      container.innerHTML = '';
             try {
                 let data=await fetch(`${url}?q=${search}&lang=en&country=in&max=100&apikey=${api_key}`)
-                //console.log(data)
+                // console.log(data)
                 loading.style.display = 'block';
                 let jsondata = await data.json()
                 // console.log(jsondata)
                 loading.style.display = 'none';
-                if (jsondata.articles.length === 0) {
+                if (!jsondata.articles || jsondata.articles.length === 0) {
                     let msg = document.createElement("h2")
                     msg.innerText = "Please search an appropriate result.";
                     document.body.append(msg)
@@ -89,14 +89,15 @@ let fetchData = async (search) => {
 
 searchBox.addEventListener('keypress', async function (event) {
         if (event.key === 'Enter') {
-               fetchData(searchBox.value.trim()) 
-            //console.log(searchBox.value)
-            searchBox.value="";
-            container.innerHTML = '';
-        }})
+    let query = searchBox.value.trim();
+    if (query) {
+        fetchData(query);
+        searchBox.value = "";
+    }
+}})
 
 window.onload=function(){
-     fetchData("technology")
+    fetchData("technology")
 }
 
 function logout() {
@@ -107,7 +108,7 @@ function logout() {
 
 function updatePlaceholders() {
     let Input = document.querySelector('input[placeholder="Press Enter to search..."]');
-    console.log(Input)
+    // console.log(Input)
 
 
     if (window.innerWidth <= 768) {
